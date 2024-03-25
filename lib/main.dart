@@ -5,41 +5,47 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello World'),
+          title: const Text('Widget을 상하로 배치하기'),
         ),
-        body: const CustomContainer(),
+        body: const Body(),
       ),
     ),
   );
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: double.infinity,
       height: 300,
-      padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        border:
-            Border.all(color: Colors.black, width: 2, style: BorderStyle.solid),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(1, 1),
-            blurRadius: 2,
-            spreadRadius: 2,
+      color: Colors.grey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // y축 정렬
+        crossAxisAlignment: CrossAxisAlignment.end, // x축 정렬
+        children: [
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.red,
+            child: const Text('Container 1'),
+          ),
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.blue,
+            child: const Text('Container 2'),
+          ),
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.green,
+            child: const Text('Container 3'),
           ),
         ],
       ),
-      child: Center(
-          child: Container(
-              color: Colors.green, child: const Text("Hello Container!"))),
     );
   }
 }
