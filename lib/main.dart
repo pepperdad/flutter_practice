@@ -5,7 +5,7 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Widget을 상하로 배치하기'),
+          title: const Text('Widget을 좌우로 배치하기'),
         ),
         body: const Body(),
       ),
@@ -18,31 +18,35 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min, // Column의 크기를 최소로 설정
-      mainAxisAlignment: MainAxisAlignment.center, // y축 정렬
-      crossAxisAlignment: CrossAxisAlignment
-          .center, // x축 정렬 => column은 좌우 폭 제한 x => center로 정렬하고 싶으면 container로 감싸고 width를 지정해야 함
-      children: [
-        Container(
-          width: 100,
-          height: 80,
-          color: Colors.red,
-          child: const Text('Container 1'),
-        ),
-        Container(
-          width: 100,
-          height: 80,
-          color: Colors.blue,
-          child: const Text('Container 2'),
-        ),
-        Container(
-          width: 100,
-          height: 80,
-          color: Colors.green,
-          child: const Text('Container 3'),
-        ),
-      ],
+    return Container(
+      color: Colors.white,
+      height: double.infinity,
+      // child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center, // ROW의 가운데 정렬
+        crossAxisAlignment: CrossAxisAlignment
+            .center, // Column과 마찬가지로 Container의 height를 줘야 정렬이 됨.
+        children: [
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.red,
+            child: const Text('Container 1'),
+          ),
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.blue,
+            child: const Text('Container 2'),
+          ),
+          Container(
+            width: 100,
+            height: 80,
+            color: Colors.green,
+            child: const Text('Container 3'),
+          ),
+        ],
+      ),
     );
   }
 }
